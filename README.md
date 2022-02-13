@@ -13,7 +13,7 @@
 |  xdg-screensaver  |  1.1.3  | Complete |
 |   xdg-settings    |  1.1.3  | Complete |
 
-## Add this repo to your project dependency
+## Usage
 Step 1. Add the Maven Central repository to your build file
 ```groovy
 allprojects {
@@ -31,5 +31,5 @@ dependencies {
 }
 ```
 
-## System properties
+## System Properties
 `com.anyicomplex.xdg.utils.scriptPath`: the specific path to load script.

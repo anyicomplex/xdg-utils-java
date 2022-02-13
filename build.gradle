@@ -1,0 +1,91 @@
+plugins {
+    id 'java-library'
+}
+
+group 'io.github.anyicomplex'
+version '1.1.3b1'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = rootProject.name
+            groupId = project.group
+            version = project.version
+            from components.java
+            pom {
+                name = 'XDG Utils Java'
+                description = 'xdg-utils wrapper for Java, only working on Linux.'
+                url = 'https://github.com/anyicomplex/xdg-utils-java'
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://mit-license.org/license.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'anyicomplex'
+                        name = 'Yi An'
+                        email = 'anyicomplex@protonmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/anyicomplex/xdg-utils-java.git'
+                    developerConnection = 'scm:git:git@github.com:anyicomplex/xdg-utils-java.git'
+                    url = 'https://github.com/anyicomplex/xdg-utils-java/tree/main'
+                }
+            }
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "OSSRH"
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+            if (project.version.endsWith("-SNAPSHOT")) {
+                url "https://s01.oss.sonatype.org/content/repositories/snapshots"
+            } else {
+                url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"
+            }
+        }
+    }
+}
+
+signing {
+    def key = System.getenv("SIGNING_KEY")
+    def password = System.getenv("SIGNING_PASSWORD")
+    useInMemoryPgpKeys(key, password)
+    sign publishing.publications.mavenJava
+}

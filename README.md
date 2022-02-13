@@ -27,7 +27,7 @@ allprojects {
 Step 2. Add the dependency
 ```groovy
 dependencies {
-    implementation 'io.github.anyicomplex:xdg-utils-java:1.1.3b1'
+    implementation 'io.github.anyicomplex:xdg-utils-java:1.1.3-beta1'
 }
 ```
 

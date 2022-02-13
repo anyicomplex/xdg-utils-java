@@ -4,14 +4,14 @@
 ## Current Status
 | supported feature | version |  status  |
 |:-----------------:|:-------:|:--------:|
-| xdg-desktop-icon  |  1.1.3  | Complete |
-| xdg-desktop-menu  |  1.1.3  | Complete |
-|     xdg-email     |  1.1.3  | Complete |
-| xdg-icon-resource |  1.1.3  | Complete |
-|     xdg-mime      |  1.1.3  | Complete |
-|     xdg-open      |  1.1.3  | Complete |
-|  xdg-screensaver  |  1.1.3  | Complete |
-|   xdg-settings    |  1.1.3  | Complete |
+| xdg-desktop-icon  |  1.1.3  | complete |
+| xdg-desktop-menu  |  1.1.3  | complete |
+|     xdg-email     |  1.1.3  | complete |
+| xdg-icon-resource |  1.1.3  | complete |
+|     xdg-mime      |  1.1.3  | complete |
+|     xdg-open      |  1.1.3  | complete |
+|  xdg-screensaver  |  1.1.3  | complete |
+|   xdg-settings    |  1.1.3  | complete |
 
 ## Usage
 ### 1. Add this repo to your project dependency

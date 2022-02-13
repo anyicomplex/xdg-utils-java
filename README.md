@@ -2,16 +2,16 @@
 **NOTE: This is NOT an implementation!** [xdg-utils](https://www.freedesktop.org/wiki/Software/xdg-utils/) wrapper for Java, only working on Linux.
 
 ## Current State
-| Supported libGDX feature | Version |  State   |
-|:------------------------:|:-------:|:--------:|
-|     xdg-desktop-icon     |  1.1.3  | Complete |
-|     xdg-desktop-menu     |  1.1.3  | Complete |
-|        xdg-email         |  1.1.3  | Complete |
-|    xdg-icon-resource     |  1.1.3  | Complete |
-|         xdg-mime         |  1.1.3  | Complete |
-|         xdg-open         |  1.1.3  | Complete |
-|     xdg-screensaver      |  1.1.3  | Complete |
-|       xdg-settings       |  1.1.3  | Complete |
+| Supported feature | Version |  State   |
+|:-----------------:|:-------:|:--------:|
+| xdg-desktop-icon  |  1.1.3  | Complete |
+| xdg-desktop-menu  |  1.1.3  | Complete |
+|     xdg-email     |  1.1.3  | Complete |
+| xdg-icon-resource |  1.1.3  | Complete |
+|     xdg-mime      |  1.1.3  | Complete |
+|     xdg-open      |  1.1.3  | Complete |
+|  xdg-screensaver  |  1.1.3  | Complete |
+|   xdg-settings    |  1.1.3  | Complete |
 
 ## Add this repo to your project dependency
 Step 1. Add the Maven Central repository to your build file

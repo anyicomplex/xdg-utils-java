@@ -1,8 +1,8 @@
 # xdg-utils-java [![Java CI with Gradle](https://github.com/anyicomplex/xdg-utils-java/actions/workflows/gradle.yml/badge.svg)](https://github.com/anyicomplex/xdg-utils-java/actions/workflows/gradle.yml) [![Publish to Maven Central](https://github.com/anyicomplex/xdg-utils-java/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/anyicomplex/xdg-utils-java/actions/workflows/gradle-publish.yml) ![License](https://img.shields.io/github/license/anyicomplex/xdg-utils-java)
 **NOTE: This is NOT an implementation!** [xdg-utils](https://www.freedesktop.org/wiki/Software/xdg-utils/) wrapper for Java, only working on Linux.
 
-## Current State
-| Supported feature | Version |  State   |
+## Current Status
+| Supported feature | Version |  Status  |
 |:-----------------:|:-------:|:--------:|
 | xdg-desktop-icon  |  1.1.3  | Complete |
 | xdg-desktop-menu  |  1.1.3  | Complete |

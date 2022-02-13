@@ -22,28 +22,28 @@ public class XDGScreenSaver {
         return XDGUtils.getScriptFile(FILE_NAME).getAbsolutePath();
     }
 
-    public static String suspend(int[] exitCode, long WindowID) {
-        return XDGUtils.process(exitCode, getScriptPath(), SUSPEND, "0x" + Long.toHexString(WindowID));
+    public static int suspend(StringBuilder output, long WindowID) {
+        return XDGUtils.process(output, getScriptPath(), SUSPEND, "0x" + Long.toHexString(WindowID));
     }
 
-    public static String resume(int[] exitCode, long WindowID) {
-        return XDGUtils.process(exitCode, getScriptPath(), RESUME, "0x" + Long.toHexString(WindowID));
+    public static int resume(StringBuilder output, long WindowID) {
+        return XDGUtils.process(output, getScriptPath(), RESUME, "0x" + Long.toHexString(WindowID));
     }
 
-    public static String activate(int[] exitCode) {
-        return XDGUtils.process(exitCode, getScriptPath(), ACTIVATE);
+    public static int activate(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), ACTIVATE);
     }
 
-    public static String lock(int[] exitCode) {
-        return XDGUtils.process(exitCode, getScriptPath(), LOCK);
+    public static int lock(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), LOCK);
     }
 
-    public static String reset(int[] exitCode) {
-        return XDGUtils.process(exitCode, getScriptPath(), RESET);
+    public static int reset(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), RESET);
     }
 
-    public static String status(int[] exitCode) {
-        return XDGUtils.process(exitCode, getScriptPath(), STATUS);
+    public static int status(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), STATUS);
     }
 
 }

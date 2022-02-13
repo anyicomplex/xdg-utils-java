@@ -58,42 +58,38 @@ public class XDGUtils {
         return bool != null && bool;
     }
 
-    public static String process(int[] exitCode, Process process) {
+    public static int process(StringBuilder output, Process process) {
         try {
-            StringBuilder output = new StringBuilder();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) output.append(line).append(LINE_FEED);
-            reader.close();
-            String result = output.toString();
-            if (result.endsWith(LINE_FEED)) result = result.substring(0, result.length() - LINE_FEED.length());
-            exitCode[0] = process.waitFor();
-            return result;
+            if (output != null) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                String line;
+                while ((line = reader.readLine()) != null) output.append(line).append(LINE_FEED);
+                reader.close();
+                output.delete(output.length() - LINE_FEED.length(), output.length());
+            }
+            return process.waitFor();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        exitCode[0] = WRAPPER_ERROR;
-        return null;
+        return WRAPPER_ERROR;
     }
 
-    public static String process(int[] exitCode, String... args) {
+    public static int process(StringBuilder output, String... args) {
         try {
-            return process(exitCode, new ProcessBuilder().command(args).start());
+            return process(output, new ProcessBuilder().command(args).start());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        exitCode[0] = WRAPPER_ERROR;
-        return null;
+        return WRAPPER_ERROR;
     }
 
-    public static String process(int[] exitCode, List<String> args) {
+    public static int process(StringBuilder output, List<String> args) {
         try {
-            return process(exitCode, new ProcessBuilder().command(args).start());
+            return process(output, new ProcessBuilder().command(args).start());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        exitCode[0] = WRAPPER_ERROR;
-        return null;
+        return WRAPPER_ERROR;
     }
 
     private static String randomUUID () {

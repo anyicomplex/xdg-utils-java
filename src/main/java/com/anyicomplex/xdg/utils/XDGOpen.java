@@ -10,8 +10,8 @@ public class XDGOpen {
         return XDGUtils.getScriptFile(FILE_NAME).getAbsolutePath();
     }
 
-    public static String process(int[] exitCode, String fileOrURL) {
-        return XDGUtils.process(exitCode, getScriptPath(), fileOrURL);
+    public static int process(StringBuilder output, String fileOrURL) {
+        return XDGUtils.process(output, getScriptPath(), fileOrURL);
     }
 
 }

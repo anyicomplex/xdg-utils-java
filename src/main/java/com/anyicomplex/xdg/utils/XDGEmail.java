@@ -27,7 +27,7 @@ public class XDGEmail {
         return XDGUtils.getScriptFile(FILE_NAME).getAbsolutePath();
     }
 
-    public static String process(int[] exitCode, Boolean utf8, String ccAddress, String bccAddress, String subjectText,
+    public static int process(StringBuilder output, Boolean utf8, String ccAddress, String bccAddress, String subjectText,
                                  String bodyText, String attachFile, String... mailtoURIOrAddresses) {
         ArrayList<String> args = new ArrayList<>(12 + mailtoURIOrAddresses.length);
         args.add(getScriptPath());
@@ -43,7 +43,7 @@ public class XDGEmail {
         args.add(isEmpty(attachFile) ? "" : ATTACH);
         args.add(isEmpty(attachFile) ? "" : attachFile);
         args.addAll(Arrays.asList(mailtoURIOrAddresses));
-        return XDGUtils.process(exitCode, args);
+        return XDGUtils.process(output, args);
     }
 
 }

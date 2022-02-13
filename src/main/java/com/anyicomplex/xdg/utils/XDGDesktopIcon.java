@@ -25,12 +25,12 @@ public class XDGDesktopIcon {
         return XDGUtils.getScriptFile(FILE_NAME).getAbsolutePath();
     }
 
-    public static String install(int[] exitCode, Boolean novendor, String FILE) {
-        return XDGUtils.process(exitCode, getScriptPath(), INSTALL, notNullBoolean(novendor) ? NOVENDOR : "", FILE);
+    public static int install(StringBuilder output, Boolean novendor, String FILE) {
+        return XDGUtils.process(output, getScriptPath(), INSTALL, notNullBoolean(novendor) ? NOVENDOR : "", FILE);
     }
 
-    public static String uninstall(int[] exitCode, String FILE) {
-        return XDGUtils.process(exitCode, getScriptPath(), UNINSTALL, FILE);
+    public static int uninstall(StringBuilder output, String FILE) {
+        return XDGUtils.process(output, getScriptPath(), UNINSTALL, FILE);
     }
 
 }

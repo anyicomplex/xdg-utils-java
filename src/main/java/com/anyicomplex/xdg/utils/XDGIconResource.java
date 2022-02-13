@@ -34,7 +34,7 @@ public class XDGIconResource {
         return XDGUtils.getScriptFile(FILE_NAME).getAbsolutePath();
     }
 
-    public static String install(int[] exitCode, Boolean noupdate, Boolean novendor,
+    public static int install(StringBuilder output, Boolean noupdate, Boolean novendor,
                                  String theme, String context, String mode, int size, String iconFile, String iconName) {
         ArrayList<String> args = new ArrayList<>(14);
         args.add(getScriptPath());
@@ -51,10 +51,10 @@ public class XDGIconResource {
         args.add(Integer.toString(size));
         args.add(iconFile);
         args.add(iconName);
-        return XDGUtils.process(exitCode, args);
+        return XDGUtils.process(output, args);
     }
 
-    public static String uninstall(int[] exitCode, Boolean noupdate, String theme, String context, String mode, int size, String iconName) {
+    public static int uninstall(StringBuilder output, Boolean noupdate, String theme, String context, String mode, int size, String iconName) {
         ArrayList<String> args = new ArrayList<>(12);
         args.add(getScriptPath());
         args.add(UNINSTALL);
@@ -68,11 +68,11 @@ public class XDGIconResource {
         args.add(SIZE);
         args.add(Integer.toString(size));
         args.add(iconName);
-        return XDGUtils.process(exitCode, args);
+        return XDGUtils.process(output, args);
     }
 
-    public static String forceupdate(int[] exitCode, String theme, String mode) {
-        return XDGUtils.process(exitCode, getScriptPath(), FORCEUPDATE, isEmpty(theme) ? "" : THEME, isEmpty(theme) ? "" : theme,
+    public static int forceupdate(StringBuilder output, String theme, String mode) {
+        return XDGUtils.process(output, getScriptPath(), FORCEUPDATE, isEmpty(theme) ? "" : THEME, isEmpty(theme) ? "" : theme,
                 isEmpty(mode) ? "" : MODE, isEmpty(mode) ? "" : mode);
     }
 

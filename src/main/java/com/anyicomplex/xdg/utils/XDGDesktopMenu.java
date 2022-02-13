@@ -32,7 +32,7 @@ public class XDGDesktopMenu {
         return XDGUtils.getScriptFile(FILE_NAME).getAbsolutePath();
     }
 
-    public static String install(int[] exitCode, Boolean noupdate, Boolean novendor, String mode, String... directoryFilesAndDesktopFiles) {
+    public static int install(StringBuilder output, Boolean noupdate, Boolean novendor, String mode, String... directoryFilesAndDesktopFiles) {
         ArrayList<String> args = new ArrayList<>(6 + directoryFilesAndDesktopFiles.length);
         args.add(getScriptPath());
         args.add(INSTALL);
@@ -41,10 +41,10 @@ public class XDGDesktopMenu {
         args.add(isEmpty(mode) ? "" : MODE);
         args.add(isEmpty(mode) ? "" : mode);
         args.addAll(Arrays.asList(directoryFilesAndDesktopFiles));
-        return XDGUtils.process(exitCode, args);
+        return XDGUtils.process(output, args);
     }
 
-    public static String uninstall(int[] exitCode, Boolean noupdate, String mode, String... directoryFilesAndDesktopFiles) {
+    public static int uninstall(StringBuilder output, Boolean noupdate, String mode, String... directoryFilesAndDesktopFiles) {
         ArrayList<String> args = new ArrayList<>(5 + directoryFilesAndDesktopFiles.length);
         args.add(getScriptPath());
         args.add(UNINSTALL);
@@ -52,11 +52,11 @@ public class XDGDesktopMenu {
         args.add(isEmpty(mode) ? "" : MODE);
         args.add(isEmpty(mode) ? "" : mode);
         args.addAll(Arrays.asList(directoryFilesAndDesktopFiles));
-        return XDGUtils.process(exitCode, args);
+        return XDGUtils.process(output, args);
     }
 
-    public static String forceupdate(int[] exitCode, String mode) {
-        return XDGUtils.process(exitCode, getScriptPath(), FORCEUPDATE, isEmpty(mode) ? "" : MODE, isEmpty(mode) ? "" : mode);
+    public static int forceupdate(StringBuilder output, String mode) {
+        return XDGUtils.process(output, getScriptPath(), FORCEUPDATE, isEmpty(mode) ? "" : MODE, isEmpty(mode) ? "" : mode);
     }
 
 }

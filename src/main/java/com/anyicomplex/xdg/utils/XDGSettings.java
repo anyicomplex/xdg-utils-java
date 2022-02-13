@@ -25,20 +25,20 @@ public class XDGSettings {
         public static final String LIST = "--list";
     }
 
-    public static String get(int[] exitCode, String property) {
-        return XDGUtils.process(exitCode, getScriptPath(), GET, property);
+    public static int get(StringBuilder output, String property) {
+        return XDGUtils.process(output, getScriptPath(), GET, property);
     }
 
-    public static String check(int[] exitCode, String property, String subproperty) {
-        return XDGUtils.process(exitCode, getScriptPath(), CHECK, property, subproperty);
+    public static int check(StringBuilder output, String property, String subproperty) {
+        return XDGUtils.process(output, getScriptPath(), CHECK, property, subproperty);
     }
 
-    public static String set(int[] exitCode, String property, String subproperty, String value) {
-        return XDGUtils.process(exitCode, getScriptPath(), SET, property, subproperty, value);
+    public static int set(StringBuilder output, String property, String subproperty, String value) {
+        return XDGUtils.process(output, getScriptPath(), SET, property, subproperty, value);
     }
 
-    public static String list(int[] exitCode) {
-        return XDGUtils.process(exitCode, getScriptPath(), LIST);
+    public static int list(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), LIST);
     }
 
 }

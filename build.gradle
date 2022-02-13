@@ -30,13 +30,13 @@ java {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId = rootProject.name
+            artifactId = project.name
             groupId = project.group
             version = project.version
             from components.java
             pom {
                 name = 'XDG Utils Java'
-                description = 'xdg-utils wrapper for Java, only working on Linux.'
+                description = 'NOTE: This is NOT an implementation! xdg-utils wrapper for Java, only working on Linux.'
                 url = 'https://github.com/anyicomplex/xdg-utils-java'
                 licenses {
                     license {

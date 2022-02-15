@@ -28,7 +28,7 @@ allprojects {
 Step 2. Add the dependency
 ```groovy
 dependencies {
-    implementation 'io.github.anyicomplex:xdg-utils-java:1.1.3-beta2'
+    implementation 'io.github.anyicomplex:xdg-utils-java:1.1.3-rc1'
 }
 ```
 ### 2. Load script files

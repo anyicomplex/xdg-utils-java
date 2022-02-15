@@ -2,6 +2,7 @@ package com.anyicomplex.xdg.utils;
 
 import static com.anyicomplex.xdg.utils.XDGDesktopIcon.Option.*;
 import static com.anyicomplex.xdg.utils.XDGDesktopIcon.Subcommand.*;
+import static com.anyicomplex.xdg.utils.XDGUtils.isEmpty;
 import static com.anyicomplex.xdg.utils.XDGUtils.notNullBoolean;
 
 public class XDGDesktopIcon {
@@ -26,11 +27,11 @@ public class XDGDesktopIcon {
     }
 
     public static int install(StringBuilder output, Boolean novendor, String FILE) {
-        return XDGUtils.process(output, getScriptPath(), INSTALL, notNullBoolean(novendor) ? NOVENDOR : "", FILE);
+        return XDGUtils.process(output, getScriptPath(), INSTALL, notNullBoolean(novendor) ? NOVENDOR : "", isEmpty(FILE) ? "" : FILE);
     }
 
     public static int uninstall(StringBuilder output, String FILE) {
-        return XDGUtils.process(output, getScriptPath(), UNINSTALL, FILE);
+        return XDGUtils.process(output, getScriptPath(), UNINSTALL, isEmpty(FILE) ? "" : FILE);
     }
 
 }

@@ -33,25 +33,27 @@ public class XDGDesktopMenu {
     }
 
     public static int install(StringBuilder output, Boolean noupdate, Boolean novendor, String mode, String... directoryFilesAndDesktopFiles) {
-        ArrayList<String> args = new ArrayList<>(6 + directoryFilesAndDesktopFiles.length);
+        boolean isEmpty = isEmpty(directoryFilesAndDesktopFiles);
+        ArrayList<String> args = new ArrayList<>(6 + (isEmpty ? 0 : directoryFilesAndDesktopFiles.length));
         args.add(getScriptPath());
         args.add(INSTALL);
         args.add(notNullBoolean(noupdate) ? NOUPDATE : "");
         args.add(notNullBoolean(novendor) ? NOVENDOR : "");
         args.add(isEmpty(mode) ? "" : MODE);
         args.add(isEmpty(mode) ? "" : mode);
-        args.addAll(Arrays.asList(directoryFilesAndDesktopFiles));
+        if (!isEmpty) args.addAll(Arrays.asList(directoryFilesAndDesktopFiles));
         return XDGUtils.process(output, args);
     }
 
     public static int uninstall(StringBuilder output, Boolean noupdate, String mode, String... directoryFilesAndDesktopFiles) {
-        ArrayList<String> args = new ArrayList<>(5 + directoryFilesAndDesktopFiles.length);
+        boolean isEmpty = isEmpty(directoryFilesAndDesktopFiles);
+        ArrayList<String> args = new ArrayList<>(5 + (isEmpty ? 0 : directoryFilesAndDesktopFiles.length));
         args.add(getScriptPath());
         args.add(UNINSTALL);
         args.add(notNullBoolean(noupdate) ? NOUPDATE : "");
         args.add(isEmpty(mode) ? "" : MODE);
         args.add(isEmpty(mode) ? "" : mode);
-        args.addAll(Arrays.asList(directoryFilesAndDesktopFiles));
+        if (!isEmpty) args.addAll(Arrays.asList(directoryFilesAndDesktopFiles));
         return XDGUtils.process(output, args);
     }
 

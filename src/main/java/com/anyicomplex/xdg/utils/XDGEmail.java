@@ -28,8 +28,9 @@ public class XDGEmail {
     }
 
     public static int process(StringBuilder output, Boolean utf8, String ccAddress, String bccAddress, String subjectText,
-                                 String bodyText, String attachFile, String... mailtoURIOrAddresses) {
-        ArrayList<String> args = new ArrayList<>(12 + mailtoURIOrAddresses.length);
+                                 String bodyText, String attachFile, String... mailtoURIsOrAddresses) {
+        boolean isEmpty = isEmpty(mailtoURIsOrAddresses);
+        ArrayList<String> args = new ArrayList<>(12 + (isEmpty ? 0 : mailtoURIsOrAddresses.length));
         args.add(getScriptPath());
         args.add(notNullBoolean(utf8) ? UTF8 : "");
         args.add(isEmpty(ccAddress) ? "" : CC);
@@ -42,7 +43,7 @@ public class XDGEmail {
         args.add(isEmpty(bodyText) ? "" : bodyText);
         args.add(isEmpty(attachFile) ? "" : ATTACH);
         args.add(isEmpty(attachFile) ? "" : attachFile);
-        args.addAll(Arrays.asList(mailtoURIOrAddresses));
+        if (!isEmpty) args.addAll(Arrays.asList(mailtoURIsOrAddresses));
         return XDGUtils.process(output, args);
     }
 

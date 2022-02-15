@@ -54,6 +54,15 @@ public class XDGUtils {
         return string == null || string.length() < 1;
     }
 
+    public static boolean isEmpty(String[] strings) {
+        if (strings == null) return true;
+        boolean result = true;
+        for (String string : strings) {
+            result = result && isEmpty(string);
+        }
+        return result;
+    }
+
     public static boolean notNullBoolean(Boolean bool) {
         return bool != null && bool;
     }

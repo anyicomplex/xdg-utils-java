@@ -34,29 +34,31 @@ public class XDGMime {
     }
 
     public static int query(StringBuilder output, String... filetypeOrDefault) {
-        List<String> args = new ArrayList<>(2 + filetypeOrDefault.length);
+        boolean isEmpty = isEmpty(filetypeOrDefault);
+        List<String> args = new ArrayList<>(2 + (isEmpty ? 0 : filetypeOrDefault.length));
         args.add(getScriptPath());
         args.add(QUERY);
-        args.addAll(Arrays.asList(filetypeOrDefault));
+        if (!isEmpty) args.addAll(Arrays.asList(filetypeOrDefault));
         return XDGUtils.process(output, args);
     }
 
     public static int defaultApplication(StringBuilder output, String... mimetypes) {
-        List<String> args = new ArrayList<>(2 + mimetypes.length);
+        boolean isEmpty = isEmpty(mimetypes);
+        List<String> args = new ArrayList<>(2 + (isEmpty ? 0 : mimetypes.length));
         args.add(getScriptPath());
         args.add(DEFAULT);
-        args.addAll(Arrays.asList(mimetypes));
+        if (!isEmpty) args.addAll(Arrays.asList(mimetypes));
         return XDGUtils.process(output, args);
     }
 
     public static int install(StringBuilder output, String mode, Boolean novendor, String mimetypesFile) {
         return XDGUtils.process(output, getScriptPath(), INSTALL, notNullBoolean(novendor) ? NOVENDOR : "", isEmpty(mode) ? "" : MODE,
-                isEmpty(mode) ? "" : mode, mimetypesFile);
+                isEmpty(mode) ? "" : mode, isEmpty(mimetypesFile) ? "" : mimetypesFile);
     }
 
     public static int uninstall(StringBuilder output, String mode, String mimetypesFile) {
         return XDGUtils.process(output, getScriptPath(), UNINSTALL, isEmpty(mode) ? "" : MODE,
-                isEmpty(mode) ? "" : mode, mimetypesFile);
+                isEmpty(mode) ? "" : mode, isEmpty(mimetypesFile) ? "" : mimetypesFile);
     }
 
 }

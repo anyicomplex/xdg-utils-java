@@ -49,8 +49,8 @@ public class XDGIconResource {
         args.add(isEmpty(mode) ? "" : mode);
         args.add(SIZE);
         args.add(Integer.toString(size));
-        args.add(iconFile);
-        args.add(iconName);
+        args.add(isEmpty(iconFile) ? "" : iconFile);
+        args.add(isEmpty(iconName) ? "" : iconName);
         return XDGUtils.process(output, args);
     }
 
@@ -67,7 +67,7 @@ public class XDGIconResource {
         args.add(isEmpty(mode) ? "" : mode);
         args.add(SIZE);
         args.add(Integer.toString(size));
-        args.add(iconName);
+        args.add(isEmpty(iconName) ? "" : iconName);
         return XDGUtils.process(output, args);
     }
 

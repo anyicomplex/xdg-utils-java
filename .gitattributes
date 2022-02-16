@@ -1,9 +1,2 @@
 # Mark script files 'detectable' but not to be included in the language statistics
-src/main/resources/xdg-desktop-icon linguist-detectable
-src/main/resources/xdg-desktop-menu linguist-detectable
-src/main/resources/xdg-email linguist-detectable
-src/main/resources/xdg-icon-resource linguist-detectable
-src/main/resources/xdg-mime linguist-detectable
-src/main/resources/xdg-open linguist-detectable
-src/main/resources/xdg-screensaver linguist-detectable
-src/main/resources/xdg-settings linguist-detectable
+src/main/resources/** linguist-vendored

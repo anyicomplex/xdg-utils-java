@@ -1,2 +1,2 @@
-# Mark script files 'detectable' but not to be included in the language statistics
+# Mark script files not to be included in the language statistics
 src/main/resources/** linguist-vendored

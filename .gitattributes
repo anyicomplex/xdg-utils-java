@@ -1,0 +1,2 @@
+# Mark script files not to be included in the language statistics
+src/main/resources/** linguist-vendored

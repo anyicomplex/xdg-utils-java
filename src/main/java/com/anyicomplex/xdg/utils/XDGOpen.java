@@ -25,6 +25,7 @@
 
 package com.anyicomplex.xdg.utils;
 
+import static com.anyicomplex.xdg.utils.XDGOpen.Option.*;
 import static com.anyicomplex.xdg.utils.XDGUtils.isEmpty;
 
 /**
@@ -43,6 +44,13 @@ import static com.anyicomplex.xdg.utils.XDGUtils.isEmpty;
 public final class XDGOpen {
 
     private XDGOpen(){}
+
+    /**
+     * All available options.
+     */
+    public static final class Option extends XDGUtils.Option {
+        private Option(){}
+    }
 
     /**
      * The script file name.
@@ -69,6 +77,42 @@ public final class XDGOpen {
      */
     public static int process(StringBuilder output, String fileOrURL) {
         return XDGUtils.process(output, getScriptPath(), isEmpty(fileOrURL) ? "" : fileOrURL);
+    }
+
+    /**
+     * Output command synopsis.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int help(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), HELP);
+    }
+
+    /**
+     * Output manual page.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int manual(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), MANUAL);
+    }
+
+    /**
+     * Output the version information.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int version(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), VERSION);
     }
 
 }

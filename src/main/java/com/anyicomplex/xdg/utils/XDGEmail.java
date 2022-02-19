@@ -75,7 +75,7 @@ public final class XDGEmail {
     /**
      * All available options.
      */
-    public static final class Option {
+    public static final class Option extends XDGUtils.Option {
         private Option(){}
         /**
          * <p>Indicates that all command line options that follow are<br>
@@ -163,6 +163,42 @@ public final class XDGEmail {
         args.add(isEmpty(attachFile) ? "" : attachFile);
         if (!isEmpty) args.addAll(Arrays.asList(mailtoURIsOrAddresses));
         return XDGUtils.process(output, args);
+    }
+
+    /**
+     * Output command synopsis.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int help(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), HELP);
+    }
+
+    /**
+     * Output manual page.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int manual(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), MANUAL);
+    }
+
+    /**
+     * Output the version information.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int version(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), VERSION);
     }
 
 }

@@ -88,22 +88,22 @@ public final class XDGSettings {
     }
 
     /**
-     * Gets the script path.
-     * @return the script path
-     */
-    public static String getScriptPath() {
-        return XDGUtils.getScriptFile(FILE_NAME).getAbsolutePath();
-    }
-
-    /**
      * All available options.
      */
-    public static final class Option {
+    public static final class Option extends XDGUtils.Option {
         private Option(){}
         /**
          * List all properties xdg-settings knows about.
          */
         public static final String LIST = "--list";
+    }
+
+    /**
+     * Gets the script path.
+     * @return the script path
+     */
+    public static String getScriptPath() {
+        return XDGUtils.getScriptFile(FILE_NAME).getAbsolutePath();
     }
 
     /**
@@ -162,6 +162,42 @@ public final class XDGSettings {
      */
     public static int list(StringBuilder output) {
         return XDGUtils.process(output, getScriptPath(), LIST);
+    }
+
+    /**
+     * Output command synopsis.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int help(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), HELP);
+    }
+
+    /**
+     * Output manual page.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int manual(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), MANUAL);
+    }
+
+    /**
+     * Output the version information.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int version(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), VERSION);
     }
 
 }

@@ -26,6 +26,7 @@
 package com.anyicomplex.xdg.utils;
 
 import static com.anyicomplex.xdg.utils.XDGScreenSaver.Subcommand.*;
+import static com.anyicomplex.xdg.utils.XDGScreenSaver.Option.*;
 
 /**
  * <p>xdg-screensaver provides commands to control the screensaver.</p>
@@ -92,6 +93,13 @@ public final class XDGScreenSaver {
          *  disabled if the screensaver is not enabled.</p>
          */
         public static final String STATUS = "status";
+    }
+
+    /**
+     * All available options.
+     */
+    public static final class Option extends XDGUtils.Option {
+        private Option(){}
     }
 
     /**
@@ -195,6 +203,42 @@ public final class XDGScreenSaver {
      */
     public static int status(StringBuilder output) {
         return XDGUtils.process(output, getScriptPath(), STATUS);
+    }
+
+    /**
+     * Output command synopsis.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int help(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), HELP);
+    }
+
+    /**
+     * Output manual page.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int manual(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), MANUAL);
+    }
+
+    /**
+     * Output the version information.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int version(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), VERSION);
     }
 
 }

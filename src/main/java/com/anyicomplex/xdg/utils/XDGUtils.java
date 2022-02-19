@@ -30,7 +30,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.*;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 import static com.anyicomplex.xdg.utils.XDGUtils.ExitCode.WRAPPER_ERROR;
 
@@ -114,6 +116,21 @@ public final class XDGUtils {
          * The system mode.
          */
         public static final String SYSTEM = "system";
+    }
+
+    static class Option {
+        /**
+         * Output command synopsis.
+         */
+        public static final String HELP = "--help";
+        /**
+         * Output manual page.
+         */
+        public static final String MANUAL = "--manual";
+        /**
+         * Output the version information.
+         */
+        public static final String VERSION = "--version";
     }
 
     public static final int BUFFER_SIZE = 4096;

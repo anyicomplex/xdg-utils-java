@@ -137,7 +137,7 @@ public final class XDGDesktopIcon {
     /**
      * All available options.
      */
-    public static final class Option {
+    public static final class Option extends XDGUtils.Option {
         private Option(){}
         /**
          * <p>Normally, xdg-desktop-icon checks to ensure that a<br>
@@ -189,6 +189,42 @@ public final class XDGDesktopIcon {
      */
     public static int uninstall(StringBuilder output, String FILE) {
         return XDGUtils.process(output, getScriptPath(), UNINSTALL, isEmpty(FILE) ? "" : FILE);
+    }
+
+    /**
+     * Output command synopsis.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int help(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), HELP);
+    }
+
+    /**
+     * Output manual page.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int manual(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), MANUAL);
+    }
+
+    /**
+     * Output the version information.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int version(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), VERSION);
     }
 
 }

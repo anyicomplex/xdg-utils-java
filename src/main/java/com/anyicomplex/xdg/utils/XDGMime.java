@@ -143,7 +143,7 @@ public final class XDGMime {
     /**
      * All available options.
      */
-    public static final class Option {
+    public static final class Option extends XDGUtils.Option {
         private Option(){}
         /**
          * <p>mode can be user or system. In user mode the file is<br>
@@ -298,6 +298,42 @@ public final class XDGMime {
     public static int uninstall(StringBuilder output, String mode, String mimetypesFile) {
         return XDGUtils.process(output, getScriptPath(), UNINSTALL, isEmpty(mode) ? "" : MODE,
                 isEmpty(mode) ? "" : mode, isEmpty(mimetypesFile) ? "" : mimetypesFile);
+    }
+
+    /**
+     * Output command synopsis.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int help(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), HELP);
+    }
+
+    /**
+     * Output manual page.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int manual(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), MANUAL);
+    }
+
+    /**
+     * Output the version information.
+     *
+     * @see com.anyicomplex.xdg.utils.XDGUtils.ExitCode
+     *
+     * @param output the output buffer
+     * @return the exit code
+     */
+    public static int version(StringBuilder output) {
+        return XDGUtils.process(output, getScriptPath(), VERSION);
     }
 
 }

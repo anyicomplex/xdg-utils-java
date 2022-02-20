@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'io.github.anyicomplex'
-version '1.1.3-rc2'
+version '1.1.3'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -55,7 +55,7 @@ publishing {
                 scm {
                     connection = 'scm:git:https://github.com/anyicomplex/xdg-utils-java.git'
                     developerConnection = 'scm:git:git@github.com:anyicomplex/xdg-utils-java.git'
-                    url = 'https://github.com/anyicomplex/xdg-utils-java/tree/main'
+                    url = 'https://github.com/anyicomplex/xdg-utils-java/tree/v1.1.3'
                 }
             }
             versionMapping {
